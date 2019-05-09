@@ -16,10 +16,33 @@
 # Write your function here
 
 
+import random
+
+
+def insertion_sort(list_of_ints):
+    a = []
+    while len(list_of_ints) >= 1:
+        minimum = list_of_ints[0]
+        for el in list_of_ints:
+            if el < minimum:
+                minimum = el
+
+        a.append(minimum)
+        list_of_ints.remove(minimum)
+
+    return a
 
 def main():
     # Test your function here
-    pass
+    example_list = []
+    for i in range(0,1001):
+        example_list.append(random.randint(0, 1000))
+
+    print(insertion_sort(example_list))
+
+
 
 if __name__ == "__main__":
-main()
+    main()
+
+
