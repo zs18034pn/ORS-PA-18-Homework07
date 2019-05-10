@@ -22,19 +22,47 @@
 
 
 def number_of_appearances(given_list):
-    maximum = given_list[0]
-    max_rep = 1
-    for i in given_list:
-        if given_list.count(i) > max_rep:
-            max_rep = given_list.count(i)
-            maximum = i
-    print("Number", maximum, "appeared", max_rep, "times")
+
+    empty_list = {}
+    length = len(given_list)
+    number_of_appearance = 0
+
+    for i in range(length):
+
+        if given_list[i] not in empty_list:
+
+            for number in range(i, length):
+                if given_list[number] == given_list[i]:
+
+                    number_of_appearance += 1
+
+                given_number = given_list[i]
+
+                empty_list[given_number] = number_of_appearance
+        number_of_appearance = 0
+
+    sequence = []
+
+    for el in empty_list:
+
+        sequence.append(empty_list[el])
+    maximum = sequence[0]
+
+    for i in range(len(sequence)):
+        if sequence[i] > maximum:
+            maximum = sequence[i]
+
+    for el in empty_list:
+        if maximum == empty_list[el]:
+            return el
 
 
 def main():
-    # Test your function here
-    int_list = [1, 2, 2, 2, 3, 4, 5, 5, 5]
-    number_of_appearances(int_list)
+
+    example_list = [8, 4, 0, 2, 2, 2, 5, 7, 0, 9, 8, 33, -10, 20, 2]
+    x = number_of_appearances(example_list)
+
+    print("In the example list number that appears the most is : " + str(x))
     pass
 
 

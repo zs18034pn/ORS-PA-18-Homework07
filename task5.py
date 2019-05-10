@@ -26,10 +26,39 @@
 # Write your class here
 
 
+class Vehicle:
+    def __init__(self, company, model, year, regNum, enginepow, color):
+        self.company = company
+        self.model = model
+        self.year = int(year)
+        self.regNum = regNum
+        self.enginePow = float(enginepow)
+        self.color = color
+
+    def cost_of_registration(self):
+
+        if self.year < 1990:
+            year_fees = 100
+        elif self.year < 2000:
+            year_fees = 200
+        elif self.year < 2010:
+            year_fees = 300
+        else:
+            year_fees = 400
+
+        registration_cost = year_fees + (int(self.enginePow) * 2)
+        print("The registration for this car would cost {0} EUR".format(registration_cost))
+
+
+
 
 def main():
     # Test your function here
+    info = Vehicle("Kia", "Ceed", 2005, "AM536", 149, "grey")
+    info.cost_of_registration()
+
     pass
+
 
 if __name__ == "__main__":
     main()
